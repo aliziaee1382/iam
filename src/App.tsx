@@ -104,29 +104,50 @@ export default function App() {
   }, [orderMessages]);
 
   // Fetch data from cPanel api.php on app mount if available
-  useEffect(() => {
-    const fetchFromPhpServer = async () => {
-      try {
-        const response = await fetch('./api.php', { method: 'GET' });
-        if (response.ok) {
-          const data = await response.json();
-          if (data && data.personalInfo) {
-            setPersonalInfo(data.personalInfo);
-            if (Array.isArray(data.services)) setServices(data.services);
-            if (Array.isArray(data.masterpieces)) setMasterpieces(data.masterpieces);
-            if (Array.isArray(data.projects)) setProjects(data.projects);
-            if (Array.isArray(data.testimonials)) setTestimonials(data.testimonials);
-            if (Array.isArray(data.faqs)) setFaqs(data.faqs);
-            if (Array.isArray(data.orderMessages)) setOrderMessages(data.orderMessages);
-          }
+  const fetchFromPhpServer = async () => {
+    try {
+      const response = await fetch('./api.php', { method: 'GET' });
+      if (response.ok) {
+        const data = await response.json();
+        if (data && data.personalInfo) {
+          setPersonalInfo(data.personalInfo);
+          if (Array.isArray(data.services)) setServices(data.services);
+          if (Array.isArray(data.masterpieces)) setMasterpieces(data.masterpieces);
+          if (Array.isArray(data.projects)) setProjects(data.projects);
+          if (Array.isArray(data.testimonials)) setTestimonials(data.testimonials);
+          if (Array.isArray(data.faqs)) setFaqs(data.faqs);
+          if (Array.isArray(data.orderMessages)) setOrderMessages(data.orderMessages);
+          return true;
         }
-      } catch (err) {
-        // Fallback silently to localStorage when running client-only dev server
       }
-    };
+    } catch (err) {
+      // Fallback silently to localStorage when running client-only dev server
+    }
+    return false;
+  };
 
+  useEffect(() => {
     fetchFromPhpServer();
   }, []);
+
+  // Handle new visitor order message submission
+  const handleAddOrderMessage = async (msg: OrderMessage) => {
+    setOrderMessages((prev) => [msg, ...prev]);
+
+    // Send directly to api.php so message is stored on cPanel server data.json
+    try {
+      await fetch('./api.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'add_order_message',
+          message: msg,
+        }),
+      });
+    } catch (err) {
+      // Fallback silently if running without server
+    }
+  };
 
   // Function to save all state directly into api.php (data.json on cPanel)
   const saveAllToPhpServer = async () => {
@@ -346,7 +367,7 @@ export default function App() {
                   <ContactSection
                     theme={theme}
                     initialServiceTitle={prefilledService}
-                    onAddOrderMessage={(msg) => setOrderMessages((prev) => [msg, ...prev])}
+                    onAddOrderMessage={handleAddOrderMessage}
                   />
                 )}
               </motion.div>
@@ -438,6 +459,7 @@ export default function App() {
         setOrderMessages={setOrderMessages}
         onResetToDefaults={handleResetToDefaults}
         onSaveToPhpServer={saveAllToPhpServer}
+        onFetchFromPhpServer={fetchFromPhpServer}
       />
 
     </div>
