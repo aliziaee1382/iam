@@ -28,7 +28,8 @@ import {
   ShieldAlert,
   Inbox,
   CheckCheck,
-  Phone
+  Phone,
+  RefreshCw
 } from 'lucide-react';
 import {
   PersonalInfo,
@@ -61,6 +62,7 @@ interface AdminPanelProps {
   setOrderMessages: React.Dispatch<React.SetStateAction<OrderMessage[]>>;
   onResetToDefaults: () => void;
   onSaveToPhpServer?: () => Promise<{ success: boolean; message: string }>;
+  onFetchFromPhpServer?: () => Promise<boolean>;
 }
 
 type AdminTab =
@@ -93,6 +95,7 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
   setOrderMessages,
   onResetToDefaults,
   onSaveToPhpServer,
+  onFetchFromPhpServer,
 }) => {
   const [activeTab, setActiveTab] = useState<AdminTab>('dashboard');
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
@@ -460,7 +463,25 @@ export const AdminPanel: React.FC<AdminPanelProps> = ({
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    {onFetchFromPhpServer && (
+                      <button
+                        onClick={async () => {
+                          const ok = await onFetchFromPhpServer();
+                          if (ok) {
+                            showToast('پیام‌ها و اطلاعات با موفقیت از سرور cPanel بروزرسانی شد.');
+                          } else {
+                            showToast('ارتباط با سرور برقرار نشد یا داده جدیدی یافت نشد.');
+                          }
+                        }}
+                        className="px-3 py-2 rounded-lg bg-purple-950/70 border border-purple-800/60 hover:bg-purple-900 text-xs text-purple-300 font-bold flex items-center gap-1.5 transition-colors"
+                        title="بررسی سرور جهت دریافت پیام‌های جدید کاربران"
+                      >
+                        <RefreshCw className="w-4 h-4 text-purple-400" />
+                        <span>بروزرسانی از سرور</span>
+                      </button>
+                    )}
+
                     {orderMessages.length > 0 && (
                       <>
                         <button
