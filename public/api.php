@@ -26,12 +26,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     exit();
 }
 
-// POST request: save updated data
+// POST request: save updated data or append single order message
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rawInput = file_get_contents('php://input');
     $decoded = json_decode($rawInput, true);
 
     if ($decoded) {
+        // Case 1: Visitor submitting a single order message from contact form
+        if (isset($decoded['action']) && $decoded['action'] === 'add_order_message' && isset($decoded['message'])) {
+            $currentData = [];
+            if (file_exists($dataFile)) {
+                $existingContent = file_get_contents($dataFile);
+                $currentData = json_decode($existingContent, true) ?: [];
+            }
+            if (!isset($currentData['orderMessages']) || !is_array($currentData['orderMessages'])) {
+                $currentData['orderMessages'] = [];
+            }
+            // Prepend new message
+            array_unshift($currentData['orderMessages'], $decoded['message']);
+            $currentData['updatedAt'] = date('c');
+
+            $saved = file_put_contents($dataFile, json_encode($currentData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            if ($saved !== false) {
+                echo json_encode([
+                    'status' => 'success',
+                    'message' => 'پیام با موفقیت در سرور ثبت شد.'
+                ], JSON_UNESCAPED_UNICODE);
+            } else {
+                http_response_code(500);
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'خطا در ذخیره پیام روی سرور'
+                ], JSON_UNESCAPED_UNICODE);
+            }
+            exit();
+        }
+
+        // Case 2: Full payload save from admin panel
         $saved = file_put_contents($dataFile, json_encode($decoded, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         if ($saved !== false) {
             echo json_encode([
@@ -54,3 +85,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     exit();
 }
+
