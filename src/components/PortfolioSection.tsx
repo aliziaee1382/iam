@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Briefcase, Eye, Send, Code, Bot, Globe, Palette } from 'lucide-react';
+import { Briefcase, Eye, ExternalLink, Code, Bot, Globe, Palette, Smartphone } from 'lucide-react';
 import { Project, ProjectCategory, ThemeMode } from '../types';
 import { PROJECTS_DATA } from '../data/portfolioData';
 import { ProjectModal } from './ProjectModal';
@@ -16,14 +16,16 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ theme, proje
 
   const categories: { id: ProjectCategory; label: string; icon: React.ReactNode }[] = [
     { id: 'all', label: 'همه نمونه‌کارها', icon: <Briefcase className="w-3.5 h-3.5" /> },
-    { id: 'web', label: 'طراحی وب', icon: <Code className="w-3.5 h-3.5" /> },
+    { id: 'web', label: 'سایت اختصاصی و وردپرس', icon: <Code className="w-3.5 h-3.5" /> },
+    { id: 'app', label: 'طراحی اپلیکیشن', icon: <Smartphone className="w-3.5 h-3.5" /> },
     { id: 'bot', label: 'ربات تلگرام', icon: <Bot className="w-3.5 h-3.5" /> },
-    { id: 'wordpress', label: 'وردپرس', icon: <Globe className="w-3.5 h-3.5" /> },
     { id: 'graphic', label: 'بنر و لوگو', icon: <Palette className="w-3.5 h-3.5" /> },
   ];
 
   const filteredProjects = selectedCategory === 'all'
     ? projects
+    : selectedCategory === 'web'
+    ? projects.filter(p => p.category === 'web' || p.category === 'wordpress')
     : projects.filter(p => p.category === selectedCategory);
 
   return (
@@ -39,7 +41,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ theme, proje
         <p className={`text-sm sm:text-base leading-relaxed ${
           theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
         }`}>
-          مجموعه‌ای از آخرین کارهای طراحی وبسایت اختصاصی، ربات‌های تلگرام، پروژه‌های وردپرسی و بنر و لوگو.
+          مجموعه‌ای از آخرین کارهای طراحی سایت اختصاصی و وردپرس، توسعه اپلیکیشن موبایل، ربات‌های تلگرام و بنر و لوگو.
         </p>
       </div>
 
@@ -98,17 +100,29 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ theme, proje
                     {project.categoryName}
                   </span>
 
-                  {/* Eye Icon Hover */}
-                  <button
-                    onClick={() => setSelectedProject(project)}
-                    className="absolute inset-0 flex items-center justify-center bg-purple-950/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-xs"
-                    title="مشاهده جزئیات"
-                  >
-                    <span className="flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 sm:px-3.5 sm:py-2 rounded-lg sm:rounded-xl bg-purple-600 text-white font-bold text-[10px] sm:text-xs shadow-lg">
+                  {/* Eye & Demo Overlay on Hover */}
+                  <div className="absolute inset-0 flex items-center justify-center gap-2 bg-purple-950/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-xs p-2">
+                    {project.demoUrl ? (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-[10px] sm:text-xs shadow-lg transition-transform hover:scale-105"
+                        title="مشاهده دمو آنلاین"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>دمو</span>
+                      </a>
+                    ) : null}
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-lg sm:rounded-xl bg-slate-900/90 hover:bg-slate-900 text-slate-100 font-bold text-[10px] sm:text-xs border border-white/20 shadow-lg transition-transform hover:scale-105"
+                      title="مشاهده جزئیات"
+                    >
                       <Eye className="w-3.5 h-3.5" />
                       <span>جزئیات</span>
-                    </span>
-                  </button>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Info */}
@@ -146,24 +160,35 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ theme, proje
               <div className="p-3 pt-0 sm:p-5 sm:pt-0 flex items-center gap-1.5 sm:gap-2">
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className={`flex-1 py-1.5 px-2 sm:py-2 sm:px-3 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold transition-colors text-center ${
+                  className={`py-1.5 px-2.5 sm:py-2 sm:px-3.5 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold transition-colors text-center ${
                     theme === 'dark'
-                      ? 'bg-slate-800 hover:bg-slate-700 text-slate-200'
-                      : 'bg-slate-200 hover:bg-slate-300 text-slate-800'
+                      ? 'bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/50'
+                      : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200'
                   }`}
                 >
                   جزئیات
                 </button>
 
-                <a
-                  href={`https://t.me/ali_ziaee1382?text=سلام آقای ضیائی! سفارش مشابه پروژه ${encodeURIComponent(project.title)} داشتم.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition-all shadow-md shadow-purple-600/30"
-                  title="سفارش مشابه در تلگرام"
-                >
-                  <Send className="w-3 h-3 sm:w-3.5 sm:h-3.5 rotate-[-20deg]" />
-                </a>
+                {project.demoUrl ? (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1 py-1.5 px-2.5 sm:py-2 sm:px-3.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-[10px] sm:text-xs font-bold shadow-md shadow-purple-600/30 hover:shadow-purple-600/50 transition-all text-center"
+                    title="مشاهده آنلاین دمو"
+                  >
+                    <span>{project.demoBtnText || 'مشاهده دمو'}</span>
+                    <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className="flex-1 flex items-center justify-center gap-1 py-1.5 px-2.5 sm:py-2 sm:px-3.5 rounded-lg sm:rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-[10px] sm:text-xs font-bold shadow-md shadow-purple-600/30 hover:shadow-purple-600/50 transition-all text-center"
+                  >
+                    <span>{project.demoBtnText || 'مشاهده دمو'}</span>
+                    <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  </button>
+                )}
               </div>
 
             </motion.div>

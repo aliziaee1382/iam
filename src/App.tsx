@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ThemeMode, PersonalInfo, Service, Masterpiece, Project, Testimonial, FAQItem, OrderMessage } from './types';
+import { ThemeMode, PersonalInfo, Service, Masterpiece, BotServiceItem, AppItem, Project, Testimonial, FAQItem, OrderMessage } from './types';
 import { Sidebar } from './components/Sidebar';
 import { AboutSection } from './components/AboutSection';
 import { ServicesSection } from './components/ServicesSection';
-import { MasterpiecesSection } from './components/MasterpiecesSection';
+import { CreationsSection } from './components/CreationsSection';
 import { PortfolioSection } from './components/PortfolioSection';
 import { ContactSection } from './components/ContactSection';
 import { AdminPanel } from './components/AdminPanel';
 import { Logo0003 } from './components/Logo0003';
-import { Sun, Moon, Send, User, Wrench, Crown, Briefcase, MessageSquare, Settings } from 'lucide-react';
+import { Sun, Moon, Send, User, Wrench, Sparkles, Briefcase, MessageSquare, Settings, Bot, Smartphone } from 'lucide-react';
 import {
   PERSONAL_INFO,
   SERVICES_DATA,
+  BOT_SERVICES_DATA,
+  APPS_DATA,
   MASTERPIECES_DATA,
   PROJECTS_DATA,
   TESTIMONIALS_DATA,
   FAQ_DATA
 } from './data/portfolioData';
 
-type VCardTab = 'about' | 'services' | 'masterpieces' | 'portfolio' | 'contact';
+type VCardTab = 'about' | 'services' | 'creations' | 'portfolio' | 'contact';
 
 export default function App() {
   const [theme, setTheme] = useState<ThemeMode>('dark');
@@ -30,12 +32,52 @@ export default function App() {
   // Dynamic Editable States with localStorage Persistence
   const [personalInfo, setPersonalInfo] = useState<PersonalInfo>(() => {
     const saved = localStorage.getItem('0003_personal_info');
-    return saved ? JSON.parse(saved) : PERSONAL_INFO;
+    if (saved) {
+      try {
+        const parsed: PersonalInfo = JSON.parse(saved);
+        let updated = false;
+        if (!parsed.tagline?.includes('اپلیکیشن')) {
+          parsed.tagline = PERSONAL_INFO.tagline;
+          parsed.aboutBio = PERSONAL_INFO.aboutBio;
+          updated = true;
+        }
+        if (parsed.telegram === 'ali_ziaee1382' || !parsed.telegram) {
+          parsed.telegram = PERSONAL_INFO.telegram;
+          parsed.telegramUrl = PERSONAL_INFO.telegramUrl;
+          updated = true;
+        }
+        if (parsed.instagram === 'Ali_ziaee1382' || parsed.instagram === 'ali_ziaee1382' || !parsed.instagram) {
+          parsed.instagram = PERSONAL_INFO.instagram;
+          parsed.instagramUrl = PERSONAL_INFO.instagramUrl;
+          updated = true;
+        }
+        if (updated) {
+          localStorage.setItem('0003_personal_info', JSON.stringify(parsed));
+        }
+        return parsed;
+      } catch {
+        return PERSONAL_INFO;
+      }
+    }
+    return PERSONAL_INFO;
   });
 
   const [services, setServices] = useState<Service[]>(() => {
     const saved = localStorage.getItem('0003_services');
-    return saved ? JSON.parse(saved) : SERVICES_DATA;
+    if (saved) {
+      try {
+        const parsed: Service[] = JSON.parse(saved);
+        const hasOldWp = parsed.some((s) => s.id === 'wordpress' || s.title === 'طراحی و مدیریت وردپرس' || s.title === 'طراحی و توسعه وردپرس');
+        const hasApp = parsed.some((s) => s.id === 'app' || s.title?.includes('اپلیکیشن'));
+        if (hasOldWp || !hasApp) {
+          return SERVICES_DATA;
+        }
+        return parsed.length > 0 ? parsed : SERVICES_DATA;
+      } catch {
+        return SERVICES_DATA;
+      }
+    }
+    return SERVICES_DATA;
   });
 
   const [masterpieces, setMasterpieces] = useState<Masterpiece[]>(() => {
@@ -43,9 +85,73 @@ export default function App() {
     return saved ? JSON.parse(saved) : MASTERPIECES_DATA;
   });
 
+  const [botServices, setBotServices] = useState<BotServiceItem[]>(() => {
+    const saved = localStorage.getItem('0003_bot_services');
+    if (saved) {
+      try {
+        const parsed: BotServiceItem[] = JSON.parse(saved);
+        const hasUploadBot = parsed.some((b) => b.id === 'bs-upload' || b.title.includes('سرویس آپلود'));
+        if (!hasUploadBot) {
+          // Remove outdated sample generic items (bs1, bs2) and load the requested 6 services
+          const cleaned = parsed.filter((b) => !['bs1', 'bs2'].includes(b.id));
+          return [...BOT_SERVICES_DATA, ...cleaned.filter((c) => !BOT_SERVICES_DATA.some((bd) => bd.id === c.id))];
+        }
+        const items = parsed.length > 0 ? parsed : BOT_SERVICES_DATA;
+        items.forEach((b) => {
+          if (b.demoUrl?.includes('ali_ziaee1382')) b.demoUrl = 'https://t.me/zerozerozerotreebot';
+          if (b.orderBtnUrl?.includes('ali_ziaee1382')) b.orderBtnUrl = 'https://t.me/zerozerozerotreebot';
+        });
+        return items;
+      } catch {
+        return BOT_SERVICES_DATA;
+      }
+    }
+    return BOT_SERVICES_DATA;
+  });
+
+  const [apps, setApps] = useState<AppItem[]>(() => {
+    const saved = localStorage.getItem('0003_apps');
+    if (saved) {
+      try {
+        const parsed: AppItem[] = JSON.parse(saved);
+        const hasMusicApp = parsed.some((a) => a.id === 'app-music-0003' || a.title.includes('موزیک پلیر 0003'));
+        let list = parsed;
+        if (!hasMusicApp) {
+          const cleaned = parsed.filter((a) => !['app1', 'app2'].includes(a.id));
+          list = [...APPS_DATA, ...cleaned.filter((c) => !APPS_DATA.some((ad) => ad.id === c.id))];
+        }
+        list.forEach((a) => {
+          if (a.demoUrl?.includes('ali_ziaee1382')) a.demoUrl = 'https://t.me/zerozerozerotreebot';
+          if (a.orderBtnUrl?.includes('ali_ziaee1382')) a.orderBtnUrl = 'https://t.me/zerozerozerotreebot';
+          if (a.downloadUrl?.includes('ali_ziaee1382')) a.downloadUrl = 'https://t.me/zerozerozerotreebot';
+        });
+        return list.length > 0 ? list : APPS_DATA;
+      } catch {
+        return APPS_DATA;
+      }
+    }
+    return APPS_DATA;
+  });
+
   const [projects, setProjects] = useState<Project[]>(() => {
     const saved = localStorage.getItem('0003_projects');
-    return saved ? JSON.parse(saved) : PROJECTS_DATA;
+    if (saved) {
+      try {
+        const parsed: Project[] = JSON.parse(saved);
+        const oldRemoved = parsed.filter((p) => !['p1', 'p2', 'p3', 'p4', 'p5', 'p6'].includes(p.id));
+        const existingIds = new Set(oldRemoved.map((p) => p.id));
+        const missingDefaults = PROJECTS_DATA.filter((p) => !existingIds.has(p.id));
+        const combined = [...missingDefaults, ...oldRemoved];
+        combined.forEach((p) => {
+          if (p.demoUrl?.includes('ali_ziaee1382')) p.demoUrl = 'https://t.me/zerozerozerotreebot';
+          if (p.telegramLink?.includes('ali_ziaee1382')) p.telegramLink = 'https://t.me/zerozerozerotreebot';
+        });
+        return combined.length > 0 ? combined : PROJECTS_DATA;
+      } catch {
+        return PROJECTS_DATA;
+      }
+    }
+    return PROJECTS_DATA;
   });
 
   const [testimonials, setTestimonials] = useState<Testimonial[]>(() => {
@@ -55,7 +161,18 @@ export default function App() {
 
   const [faqs, setFaqs] = useState<FAQItem[]>(() => {
     const saved = localStorage.getItem('0003_faqs');
-    return saved ? JSON.parse(saved) : FAQ_DATA;
+    if (saved) {
+      try {
+        const parsed: FAQItem[] = JSON.parse(saved);
+        return parsed.map((f) => ({
+          ...f,
+          answer: f.answer.replace(/ali_ziaee1382@/g, 'zerozerozerotreebot@'),
+        }));
+      } catch {
+        return FAQ_DATA;
+      }
+    }
+    return FAQ_DATA;
   });
 
   const [orderMessages, setOrderMessages] = useState<OrderMessage[]>(() => {
@@ -88,6 +205,14 @@ export default function App() {
   }, [masterpieces]);
 
   useEffect(() => {
+    localStorage.setItem('0003_bot_services', JSON.stringify(botServices));
+  }, [botServices]);
+
+  useEffect(() => {
+    localStorage.setItem('0003_apps', JSON.stringify(apps));
+  }, [apps]);
+
+  useEffect(() => {
     localStorage.setItem('0003_projects', JSON.stringify(projects));
   }, [projects]);
 
@@ -113,6 +238,8 @@ export default function App() {
           setPersonalInfo(data.personalInfo);
           if (Array.isArray(data.services)) setServices(data.services);
           if (Array.isArray(data.masterpieces)) setMasterpieces(data.masterpieces);
+          if (Array.isArray(data.botServices)) setBotServices(data.botServices);
+          if (Array.isArray(data.apps)) setApps(data.apps);
           if (Array.isArray(data.projects)) setProjects(data.projects);
           if (Array.isArray(data.testimonials)) setTestimonials(data.testimonials);
           if (Array.isArray(data.faqs)) setFaqs(data.faqs);
@@ -155,6 +282,8 @@ export default function App() {
       personalInfo,
       services,
       masterpieces,
+      botServices,
+      apps,
       projects,
       testimonials,
       faqs,
@@ -208,7 +337,7 @@ export default function App() {
   const navTabs: { id: VCardTab; label: string; icon: React.ReactNode }[] = [
     { id: 'about', label: 'درباره من', icon: <User className="w-4 h-4" /> },
     { id: 'services', label: 'خدمات من', icon: <Wrench className="w-4 h-4" /> },
-    { id: 'masterpieces', label: 'شاهکارها', icon: <Crown className="w-4 h-4 text-amber-400" /> },
+    { id: 'creations', label: 'ساخته‌هام', icon: <Sparkles className="w-4 h-4 text-purple-400" /> },
     { id: 'portfolio', label: 'نمونه‌کارها', icon: <Briefcase className="w-4 h-4" /> },
     { id: 'contact', label: 'راه ارتباطی', icon: <MessageSquare className="w-4 h-4" /> },
   ];
@@ -223,6 +352,8 @@ export default function App() {
     setPersonalInfo(PERSONAL_INFO);
     setServices(SERVICES_DATA);
     setMasterpieces(MASTERPIECES_DATA);
+    setBotServices(BOT_SERVICES_DATA);
+    setApps(APPS_DATA);
     setProjects(PROJECTS_DATA);
     setTestimonials(TESTIMONIALS_DATA);
     setFaqs(FAQ_DATA);
@@ -336,7 +467,6 @@ export default function App() {
                     onOrderService={handleOrderService}
                     personalInfo={personalInfo}
                     services={services}
-                    testimonials={testimonials}
                   />
                 )}
 
@@ -348,10 +478,11 @@ export default function App() {
                   />
                 )}
 
-                {activeTab === 'masterpieces' && (
-                  <MasterpiecesSection
+                {activeTab === 'creations' && (
+                  <CreationsSection
                     theme={theme}
-                    masterpieces={masterpieces}
+                    botServices={botServices}
+                    apps={apps}
                     onOrderService={handleOrderService}
                   />
                 )}
@@ -405,7 +536,9 @@ export default function App() {
           <div className="flex items-center gap-4 text-xs font-semibold">
             <button onClick={() => setActiveTab('about')} className="hover:text-purple-500 transition-colors">درباره من</button>
             <span>•</span>
-            <button onClick={() => setActiveTab('masterpieces')} className="hover:text-purple-500 transition-colors">شاهکارها</button>
+            <button onClick={() => setActiveTab('services')} className="hover:text-purple-500 transition-colors">خدمات من</button>
+            <span>•</span>
+            <button onClick={() => setActiveTab('creations')} className="hover:text-purple-500 transition-colors">ساخته‌هام</button>
             <span>•</span>
             <button onClick={() => setActiveTab('portfolio')} className="hover:text-purple-500 transition-colors">نمونه‌کارها</button>
             <span>•</span>
@@ -449,6 +582,10 @@ export default function App() {
         setServices={setServices}
         masterpieces={masterpieces}
         setMasterpieces={setMasterpieces}
+        botServices={botServices}
+        setBotServices={setBotServices}
+        apps={apps}
+        setApps={setApps}
         projects={projects}
         setProjects={setProjects}
         testimonials={testimonials}

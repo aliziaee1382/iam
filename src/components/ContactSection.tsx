@@ -17,7 +17,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ theme, initialSe
   // Form State
   const [name, setName] = useState('');
   const [contactHandle, setContactHandle] = useState('');
-  const [serviceNeeded, setServiceNeeded] = useState(initialServiceTitle || 'طراحی وبسایت اختصاصی');
+  const [serviceNeeded, setServiceNeeded] = useState(initialServiceTitle || 'طراحی سایت اختصاصی و وردپرس');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -35,7 +35,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ theme, initialSe
       id: `msg_${Date.now()}`,
       name: name.trim(),
       contactHandle: contactHandle.trim(),
-      serviceNeeded: serviceNeeded || 'طراحی وبسایت اختصاصی',
+      serviceNeeded: serviceNeeded || 'طراحی سایت اختصاصی و وردپرس',
       message: message.trim() || 'درخواست مشاوره جهت ثبت سفارش',
       createdAt: new Date().toLocaleDateString('fa-IR', { year: 'numeric', month: 'long', day: 'numeric' }) + ' - ' + new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' }),
       read: false,
@@ -315,10 +315,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ theme, initialSe
                     theme === 'dark' ? 'bg-slate-950 border-purple-500/20 text-white' : 'bg-white border-slate-300 text-slate-900'
                   }`}
                 >
-                  <option value="طراحی وبسایت اختصاصی">طراحی وبسایت اختصاصی</option>
-                  <option value="توسعه ربات تلگرام">توسعه ربات تلگرام</option>
-                  <option value="طراحی و مدیریت وردپرس">طراحی و مدیریت وردپرس</option>
-                  <option value="طراحی بنر و لوگو">طراحی بنر و لوگو</option>
+                  <option value="طراحی سایت اختصاصی و وردپرس">طراحی سایت اختصاصی و وردپرس</option>
+                  <option value="طراحی و توسعه اپلیکیشن موبایل (کتلین و جاوا)">طراحی و توسعه اپلیکیشن موبایل (کتلین و جاوا)</option>
+                  <option value="توسعه ربات هوشمند تلگرام">توسعه ربات هوشمند تلگرام</option>
+                  <option value="طراحی گرافیک، بنر و لوگو">طراحی گرافیک، بنر و لوگو</option>
                   <option value="مشاوره عمومی">مشاوره عمومی و موارد دیگر</option>
                 </select>
               </div>

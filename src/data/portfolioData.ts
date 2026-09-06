@@ -1,19 +1,19 @@
-import { Project, Service, Testimonial, Skill, FAQItem, Masterpiece, PersonalInfo } from '../types';
+import { Project, Service, Testimonial, Skill, FAQItem, Masterpiece, BotServiceItem, AppItem, PersonalInfo } from '../types';
 
 export const PERSONAL_INFO: PersonalInfo = {
   name: 'علی ضیائی',
   brand: '0003',
-  tagline: 'طراح وبسایت، توسعه‌دهنده ربات تلگرام و دیزاینر گرافیک',
+  tagline: 'طراحی سایت اختصاصی و وردپرس، توسعه اپلیکیشن (Kotlin/Java) و ربات تلگرام',
   phone: '09960826040',
-  telegram: 'ali_ziaee1382',
-  telegramUrl: 'https://t.me/ali_ziaee1382',
-  instagram: 'Ali_ziaee1382',
-  instagramUrl: 'https://instagram.com/Ali_ziaee1382',
+  telegram: 'zerozerozerotreebot',
+  telegramUrl: 'https://t.me/zerozerozerotreebot',
+  instagram: 'team0003',
+  instagramUrl: 'https://instagram.com/team0003',
   location: 'ایران',
   experienceYears: '+۴ سال',
   completedProjects: '+۶۰',
   satisfactionRate: '۹۹٪',
-  aboutBio: `من علی ضیائی هستم؛ توسعه‌دهنده و طراح فرانت‌اند وبسایت، سازنده ربات‌های پیشرفته تلگرامی، متخصص وردپرس و طراح گرافیک (بنر و لوگو). فعالیت من با هدف ارائه محصولات نرم‌افزاری و دیجیتال با بالاترین کیفیت visual، عملکرد بی‌نقص و رابط کاربری بسیار مدرن شکل گرفته است. در هر پروژه تلاش می‌کنم تجربه کاربری فوق‌العاده‌ای خلق کنم.`,
+  aboutBio: `من علی ضیائی هستم؛ طراح و برنامه‌نویس وبسایت‌های اختصاصی و وردپرس، توسعه‌دهنده اپلیکیشن‌های بومی اندروید با کتلین (Kotlin) و جاوا (Java)، سازنده ربات‌های پیشرفته تلگرام و طراح هویت بصری (بنر و لوگو). فعالیت من تحت عنوان برند شخصی "0003" با تمرکز بر بالاترین کیفیت visual، سرعت ماکزیمم و عملکرد پایدار شکل گرفته است. در هر پروژه همراه شما هستم تا ایده‌تان را به یک محصول دیجیتال بی‌نقص تبدیل کنیم.`,
   avatarImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop',
   statusText: 'آنلاین',
   customContacts: [
@@ -32,6 +32,188 @@ export const PERSONAL_INFO: PersonalInfo = {
   ]
 };
 
+export const BOT_SERVICES_DATA: BotServiceItem[] = [
+  {
+    id: 'bs-upload',
+    title: 'سرویس آپلود 0003',
+    subtitle: 'آپلود نامحدود و دائمی فایل، تبدیل به لینک مستقیم پرسرعت',
+    badge: 'سرویس ابری',
+    description: 'سرویس و ربات تلگرام برای آپلود پرسرعت انواع فایل‌ها، ویدیوها و اسناد حجیم تا سقف ۲ گیگابایت با تولید آنی لینک مستقیم و بدون فیلتر، ماندگاری همیشگی فایل‌ها و قابلیت استریم مستقیم.',
+    impactMetric: 'تا ۲ گیگ',
+    impactLabel: 'حداکثر حجم هر فایل',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://t.me/zerozerozerotreebot',
+    demoBtnText: 'ورود به ربات',
+    orderBtnText: 'سفارش سرویس مشابه',
+    orderBtnUrl: 'https://t.me/zerozerozerotreebot',
+    technologies: ['Python Asyncio', 'Telegram Bot API', 'S3 Storage', 'FastAPI', 'High-speed CDN'],
+    keyInnovations: [
+      'تولید خودکار لینک مستقیم پرسرعت و بدون انقضا',
+      'پشتیبانی کامل از تمامی پسوندها و فرمت‌های صوتی و تصویری',
+      'صف آپلود هوشمند و پایدار با آپتایم ۱۰۰٪',
+      'محافظت از فایل‌ها با رمز عبور و لینک‌های امن اختصاصی'
+    ],
+    clientName: 'محصول و ساخته شخصی 0003'
+  },
+  {
+    id: 'bs-qrcode',
+    title: 'کیو ار کد ساز 0003',
+    subtitle: 'تولید و اسکن کدهای QR اختصاصی، رنگی، لوگودار و وکتور',
+    badge: 'ابزار کاربردی',
+    description: 'ربات هوشمند ساخت انواع کیوآرکد پیشرفته با قابلیت درج لوگوی برند شخصی، پالت‌های رنگی سفارشی، ساخت QR برای اتصال سریع به وای‌فای، شماره کارت، کارت ویزیت VCard و لینک شبکه‌های اجتماعی.',
+    impactMetric: 'فوق‌العاده آنی',
+    impactLabel: 'تولید با کیفیت Ultra HD',
+    image: 'https://images.unsplash.com/photo-1595079672139-545c0255a184?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://t.me/zerozerozerotreebot',
+    demoBtnText: 'ورود به ربات',
+    orderBtnText: 'سفارش سرویس مشابه',
+    orderBtnUrl: 'https://t.me/zerozerozerotreebot',
+    technologies: ['Python', 'OpenCV / Pillow', 'Vector SVG Engine', 'Telegram Bot API'],
+    keyInnovations: [
+      'جاسازی لوگوی اختصاصی در کانون بارکد بدون خطای خوانش',
+      'خروجی با وضوح برداری و فرمت‌های باکیفیت SVG, PNG و PDF',
+      'پشتیبانی از قالب‌های آماده شبکه‌ها، پیامک، تماس و لوکیشن',
+      'قابلیت اسکن و خواندن محتوای QR کد از روی عکس'
+    ],
+    clientName: 'محصول و ساخته شخصی 0003'
+  },
+  {
+    id: 'bs-downloader',
+    title: 'دانلود از همه جا 0003',
+    subtitle: 'دانلودر همه‌کاره و پرسرعت شبکه‌های اجتماعی و پلتفرم‌های جهانی',
+    badge: 'پرمخاطب‌ترین',
+    description: 'ربات قدرتمند دریافت ویدیو، صوت و تصاویر با بالاترین کیفیت از اینستاگرام (پست، ریلز، استوری)، یوتیوب، تیک‌تاک بدون واترمارک، پینترست، ساندکلاد و توییتر تنها با ارسال لینک.',
+    impactMetric: '۳۰+ پلتفرم',
+    impactLabel: 'پشتیبانی از سایت‌های مطرح',
+    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://t.me/zerozerozerotreebot',
+    demoBtnText: 'ورود به ربات',
+    orderBtnText: 'سفارش سرویس مشابه',
+    orderBtnUrl: 'https://t.me/zerozerozerotreebot',
+    technologies: ['Python yt-dlp', 'FFmpeg Processing', 'Redis Queue', 'Telegram Bot API', 'High-Speed Proxy'],
+    keyInnovations: [
+      'حذف خودکار واترمارک و لوگوی اضافه ویدیوها',
+      'امکان انتخاب دستی کیفیت از 1080p تا 4K و فایل صوتی MP3',
+      'سرعت تبدیل و ارسال فوری بدون معطلی در صف سرور',
+      'دریافت خودکار آلبوم‌ها و استوری‌های چندتایی اینستاگرام'
+    ],
+    clientName: 'محصول و ساخته شخصی 0003'
+  },
+  {
+    id: 'bs-glass-btn',
+    title: 'دکمه شیشه‌ای ساز 0003',
+    subtitle: 'ساخت پیام‌های حرفه‌ای و پست‌های تبلیغاتی با دکمه شیشه‌ای اینلاین',
+    badge: 'مخصوص ادمین‌ها',
+    description: 'ابزار طراحی و ایجاد پست‌های جذاب تلگرامی مجهز به دکمه‌های شیشه‌ای چندردیفه، دکمه‌های بازشدن لینک، پاپ‌آپ هشدار، وب‌اپ و اشتراک‌گذاری برای مدیران کانال‌ها، گروه‌ها و بات‌ها.',
+    impactMetric: 'نامحدود',
+    impactLabel: 'چیدمان ردیف‌ها و دکمه‌ها',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://t.me/zerozerozerotreebot',
+    demoBtnText: 'ورود به ربات',
+    orderBtnText: 'سفارش سرویس مشابه',
+    orderBtnUrl: 'https://t.me/zerozerozerotreebot',
+    technologies: ['Node.js', 'Telegram Inline Engine', 'MarkdownV2 Parser', 'MongoDB'],
+    keyInnovations: [
+      'ویرایشگر ویژوال و پیش‌نمایش لحظه‌ای چیدمان دکمه‌ها قبل از انتشار',
+      'پشتیبانی از دکمه‌های ترکیبی (لینک، بازفوروارد، آلرت، وب‌اپ)',
+      'ارسال مستقیم پیام نهایی به کانال‌های مقصد بدون برچسب فوروارد',
+      'امکان ثبت و ذخیره قالب‌های آماده برای استفاده‌های بعدی'
+    ],
+    clientName: 'محصول و ساخته شخصی 0003'
+  },
+  {
+    id: 'bs-currency',
+    title: 'قیمت لحظه‌ای ارز 0003',
+    subtitle: 'استعلام آنی نرخ دلار، تتر، طلا، سکه، رمزارزها و بازارهای مالی',
+    badge: 'آپدیت لحظه‌ای',
+    description: 'سیستم اتوماسیون مانیتورینگ نرخ‌های بازارهای مالی ایران و جهان با قابلیت تنظیم آلارم تغییر قیمت، نمودار مقایسه‌ای نوسانات، محاسبه‌گر دقیق تبدیل ارز و اخبار فوری اقتصادی.',
+    impactMetric: 'هر ۵ ثانیه',
+    impactLabel: 'همگام‌سازی با صرافی‌ها',
+    image: 'https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://t.me/zerozerozerotreebot',
+    demoBtnText: 'ورود به ربات',
+    orderBtnText: 'سفارش سرویس مشابه',
+    orderBtnUrl: 'https://t.me/zerozerozerotreebot',
+    technologies: ['Python Asyncio', 'WebSockets', 'Nobitex & Binance API', 'Matplotlib / Chart Engine', 'Redis'],
+    keyInnovations: [
+      'دریافت نرخ مستقیم از منابع رسمی بدون کوچک‌ترین تاخیر زمانی',
+      'تنظیم آلارم هوشمند و ارسال اخطار هنگام نوسانات شدید قیمتی',
+      'رسم خودکار نمودارهای شمعی (کندل‌استیک) روزانه و هفتگی',
+      'ماشین حساب تبدیل خودکار مقادیر ریالی، دلاری و تتر'
+    ],
+    clientName: 'محصول و ساخته شخصی 0003'
+  },
+  {
+    id: 'bs-tempmail',
+    title: 'فیک ایمیل 0003',
+    subtitle: 'تولید ایمیل موقت و یکبارمصرف با صندوق دریافت (اینباکس) فوری',
+    badge: 'حفظ امنیت',
+    description: 'ربات تلگرامی ایجاد سریع صندوق‌های ایمیل موقت و ناشناس جهت ثبت‌نام امن در وبسایت‌ها، دریافت فوری کدهای فعال‌سازی و تاییدیه، و جلوگیری از پر شدن ایمیل اصلی شما با هرزنامه‌ها.',
+    impactMetric: 'صفر ثانیه',
+    impactLabel: 'دریافت بلادرنگ ایمیل‌ها',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://t.me/zerozerozerotreebot',
+    demoBtnText: 'ورود به ربات',
+    orderBtnText: 'سفارش سرویس مشابه',
+    orderBtnUrl: 'https://t.me/zerozerozerotreebot',
+    technologies: ['Node.js / Express', 'IMAP & SMTP Webhooks', 'Temp Mail Engine', 'Telegram Bot API'],
+    keyInnovations: [
+      'تولید نامحدود ایمیل‌های تصادفی یا با پیشوند و نام دلخواه کاربر',
+      'فوروارد خودکار و فوری متن و فایل‌های ضمیمه ایمیل به چت تلگرام',
+      'عدم ذخیره‌سازی داده‌ها جهت تضمین ۱۰۰٪ امنیت و حریم خصوصی',
+      'امکان تمدید اعتبار و نگهداری آدرس ایمیل برای دریافت مجدد'
+    ],
+    clientName: 'محصول و ساخته شخصی 0003'
+  }
+];
+
+export const APPS_DATA: AppItem[] = [
+  {
+    id: 'app-music-0003',
+    title: 'موزیک پلیر 0003',
+    subtitle: 'پلیر صوتی پیشرفته و مدرن اندروید توسعه‌داده‌شده با کتلین (Kotlin Native)',
+    badge: 'پروژه شخصی',
+    description: 'اپلیکیشن موزیک پلیر سبک، سریع و آفلاین با رابط کاربری نئومورفیک دارک/لایت، اکولایزر گرافیکی ۱۰ بانده با تقویت بیس (Bass Boost)، شناسایی خودکار آلبوم‌ها و همگام‌سازی اشعار ترانه (Synced Lyrics).',
+    impactMetric: 'کیفیت HD',
+    impactLabel: 'پخش بدون افت کیفیت و کم‌مصرف',
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1000&auto=format&fit=crop',
+    downloadUrl: 'https://chat0003.ir/apps/music-player-0003.apk',
+    downloadBtnText: 'دانلود برنامه',
+    orderBtnText: 'سفارش برنامه مشابه',
+    orderBtnUrl: 'https://t.me/zerozerozerotreebot',
+    technologies: ['Kotlin Native', 'Jetpack Compose', 'ExoPlayer / Media3', 'Room DB', 'Audio Effects FX', 'Material 3'],
+    keyInnovations: [
+      'اکولایزر حرفه‌ای با افکت‌های مجازی‌ساز سه‌بعدی و تقویت صدا',
+      'تغییر پویای تم و رنگ رابط کاربری بر اساس کاور موزیک در حال پخش',
+      'پشتیبانی جامع از تمام فرمت‌های صوتی (FLAC, MP3, WAV, AAC, OGG)',
+      'تایمر خواب هوشمند و بهینه‌سازی حداکثری برای جلوگیری از مصرف باتری در پس‌زمینه'
+    ],
+    clientName: 'محصول و ساخته شخصی'
+  },
+  {
+    id: 'app-downloader-0003',
+    title: 'دانلودر 0003',
+    subtitle: 'دانلود منیجر چندرشته‌ای پرسرعت با کتلین و جاوا (Multi-thread Engine)',
+    badge: 'پروژه شخصی',
+    description: 'ابزار قدرتمند مدیریت و افزایش سرعت دانلود در اندروید مجهز به موتور چندتکه‌ای، مرورگر اختصاصی کاوشگر رسانه برای تشخیص آنی لینک‌های دانلود ویدیو و موزیک، و سیستم از سرگیری (Resume) هوشمند.',
+    impactMetric: 'تا ۵ برابر',
+    impactLabel: 'شتاب‌دهنده سرعت دانلود',
+    image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop',
+    downloadUrl: 'https://chat0003.ir/apps/downloader-0003.apk',
+    downloadBtnText: 'دانلود برنامه',
+    orderBtnText: 'سفارش برنامه مشابه',
+    orderBtnUrl: 'https://t.me/zerozerozerotreebot',
+    technologies: ['Kotlin & Java', 'OkHttp 4 Engine', 'Foreground Service', 'Coroutines', 'SQLite DB', 'Material Design 3'],
+    keyInnovations: [
+      'تقسیم هوشمند فایل به چندین کانکشن موازی جهت دستیابی به حداکثر پهنای باند',
+      'شناسایی آنی و خودکار لینک‌های دانلود در کلیپ‌بورد گوشی و مرورگر',
+      'پایداری کامل و قابلیت Resume در صورت قطعی اینترنت یا بستن برنامه',
+      'دسته‌بندی خودکار فایل‌های دریافتی بر اساس نوع (ویدیو، آهنگ، نرم‌افزار، اسناد)'
+    ],
+    clientName: 'محصول و ساخته شخصی'
+  }
+];
+
 export const MASTERPIECES_DATA: Masterpiece[] = [
   {
     id: 'm1',
@@ -42,7 +224,7 @@ export const MASTERPIECES_DATA: Masterpiece[] = [
     impactMetric: '۲۵,۰۰۰+',
     impactLabel: 'کاربر فعال ماهانه',
     image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
-    demoUrl: 'https://t.me/ali_ziaee1382',
+    demoUrl: 'https://t.me/zerozerozerotreebot',
     technologies: ['React 19', 'Python Asyncio', 'PostgreSQL', 'Webhooks', 'Zarinpal API'],
     keyInnovations: [
       'پردازش پرداختی در زیر ۲ ثانیه',
@@ -61,7 +243,7 @@ export const MASTERPIECES_DATA: Masterpiece[] = [
     impactMetric: 'کمتر از ۰.۸s',
     impactLabel: 'سرعت بارگذاری صفحه',
     image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',
-    demoUrl: 'https://t.me/ali_ziaee1382',
+    demoUrl: 'https://t.me/zerozerozerotreebot',
     technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'TypeScript', 'Node.js'],
     keyInnovations: [
       'انیمیشن‌های بدون افت فریم حتی روی گوشی‌های قدیمی',
@@ -80,7 +262,7 @@ export const MASTERPIECES_DATA: Masterpiece[] = [
     impactMetric: '۱۰۰٪',
     impactLabel: 'کاهش دانلود غیرمجاز ویدیو',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop',
-    demoUrl: 'https://t.me/ali_ziaee1382',
+    demoUrl: 'https://t.me/zerozerozerotreebot',
     technologies: ['WordPress Core', 'WooCommerce API', 'Custom PHP', 'FFmpeg Encryption'],
     keyInnovations: [
       'واترمارک پویا روی ویدیوهای آموزشی',
@@ -94,167 +276,255 @@ export const MASTERPIECES_DATA: Masterpiece[] = [
 
 export const PROJECTS_DATA: Project[] = [
   {
-    id: 'p1',
-    title: 'ربات فروشگاهی و مدیریت VIP تلگرام',
-    category: 'bot',
-    categoryName: 'ربات تلگرام',
-    description: 'ربات هوشمند تلگرامی با اتصال به درگاه پرداخت مستقیم، پنل مدیریت پیشرفته و احراز هویت خودکار کاربران.',
-    fullDetails: 'این ربات تلگرامی برای فروش اشتراک‌های ویژه و محصولات دیجیتال طراحی شده است. شامل سیستم کیف پول آنلاین، تولید لایسنس اختصاصی، گزارش‌گیری مالی در لحظه و ارسال پیام‌های همگانی هوشمند به کاربران است.',
-    features: [
-      'اتصال به درگاه‌های پرداخت ریالی و کریپتو',
-      'پنل مدیریت حرفه‌ای درون تلگرام با آمار دقیق',
-      'سیستم دعوت از دوستان (Referral) و دریافت پاداش',
-      'ارسال اعلان اتوماتیک انقضای اشتراک',
-      'پشتیبانی آنلاین و تیکتینگ درون ربات'
-    ],
-    technologies: ['Python', 'python-telegram-bot', 'SQLite/PostgreSQL', 'Webhooks', 'Zarinpal API'],
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop',
-    telegramLink: 'https://t.me/ali_ziaee1382',
-    clientName: 'آکادمی رمزارز پرشیا',
-    rating: 5,
-    featured: true,
-  },
-  {
-    id: 'p2',
-    title: 'فروشگاه مدرن وردپرسی با بهینه‌سازی سرعت فوق‌العاده',
-    category: 'wordpress',
-    categoryName: 'وردپرس',
-    description: 'طراحی قالب اختصاصی ووکامرس، سرعت بارگذاری زیر ۱.۵ ثانیه و UI بسیار شیک و مدرن.',
-    fullDetails: 'طراحی و پیاده‌سازی وبسایت فروشگاهی حرفه‌ای بر پایه وردپرس و ووکامرس با ساختار کدنویسی تمیز، رعایت تمام استانداردهای سئو، سیستم جستجوی زنده (Ajax Search) و حالت شب و روز.',
-    features: [
-      'کاهش زمان بارگذاری به زیر ۱.۵ ثانیه (رتبه A در GTmetrix)',
-      'سیستم فیلتر هوشمند محصولات بر اساس ویژگی‌ها',
-      'طراحی کاملاً واکنش‌گرا (Responsive) و اپ‌گونه در موبایل',
-      'اتصال اتوماتیک به پنل پیامک و درگاه‌های بانکی',
-      'سئوی فنی و ساختاری استاندارد'
-    ],
-    technologies: ['WordPress', 'WooCommerce', 'Elementor Pro', 'Custom PHP', 'CSS3/Tailwind'],
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop',
-    telegramLink: 'https://t.me/ali_ziaee1382',
-    clientName: 'فروشگاه پوشاک لومیر',
-    rating: 5,
-    featured: true,
-  },
-  {
-    id: 'p3',
-    title: 'وبسایت شخصی و پورتفولیو دارک مود 0003',
+    id: 'p-bank',
+    title: 'وبسایت معرفی و لندینگ پیج خدمات بانکی و نئوبانک',
     category: 'web',
     categoryName: 'طراحی وب اختصاصی',
-    description: 'سایت تک‌صفحه‌ای مدرن با انیمیشن‌های فریمورک Motion، تم بنفش نئونی و سرعت بی‌نظیر.',
-    fullDetails: 'طراحی فرانت‌اند اختصاصی با React و Tailwind CSS، دارای انیمیشن‌های بسار نرم، قابلیت سوییچ بین دارک‌مود و لایت‌مود، فرم سفارش هوشمند و محاسبه‌گر قیمت پروژه.',
+    description: 'طراحی مدرن لندینگ پیج خدمات بانکی با محاسبه‌گر اقساط وام، سپرده‌ها و پیشخوان دیجیتال.',
+    fullDetails: 'طراحی و پیاده‌سازی کامل پرتال لندینگ معرفی خدمات بانکی مدرن با رابط کاربری فین‌تک و دارک مود، معرفی کارت‌های اعتباری، سپرده‌ها و تسهیلات، سیستم تعاملی محاسبه سود و اقساط وام، امنیت بصری و انیمیشن‌های بسیار روان.',
     features: [
-      'رابط کاربری مدرن بنفش با افکت‌های Glassmorphic',
-      'پشتیبانی کامل از حالت‌های دارک مود و لایت مود',
-      'محاسبه‌گر تعاملی و هوشمند قیمت سفارش',
-      'انیمیشن‌های سیال با Motion',
-      'طراحی RTL استاندارد'
+      'محاسبه‌گر تعاملی سود سپرده و اقساط تسهیلات بانکی',
+      'معرفی مدرن خدمات همراه بانک و افتتاح حساب آنلاین',
+      'طراحی ریسپانسیو اختصاصی با استانداردهای امنیتی و فین‌تک',
+      'سرعت بارگذاری فوق‌العاده بالا و ساختار سئو شده',
+      'انیمیشن‌های جذاب و تجربه کاربری (UX) استاندارد'
     ],
-    technologies: ['React 19', 'Tailwind CSS v4', 'Framer Motion', 'TypeScript', 'Vite'],
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop',
-    telegramLink: 'https://t.me/ali_ziaee1382',
-    clientName: 'علی ضیائی',
+    technologies: ['React', 'Tailwind CSS', 'TypeScript', 'Framer Motion', 'Vite'],
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://chat0003.ir/bank/dist',
+    demoBtnText: 'مشاهده دمو',
+    telegramLink: 'https://t.me/zerozerozerotreebot',
+    clientName: 'پروژه لندینگ بانکی',
     rating: 5,
     featured: true,
   },
   {
-    id: 'p4',
-    title: 'پک برندینگ، لوگوی مدرن و بنرهای تبلیغاتی',
-    category: 'graphic',
-    categoryName: 'طراحی بنر و لوگو',
-    description: 'طراحی لوگوی مینیمال، هویت بصری یکپارچه و بنرهای متحرک اینستاگرام و وب.',
-    fullDetails: 'پکیج کامل طراحی هویت بصری برند شامل لوگو تایپ اختصاصی، پالت رنگی استاندارد، قالب پست و استوری اینستاگرام، و بنرهای تبلیغاتی کلیکی برای وبسایت‌ها.',
-    features: [
-      'لوگوی مینیمال و به یاد ماندنی با فایل‌های برداری (SVG/Vector)',
-      'دفترچه راهنمای برند (Brandbook) کوچک',
-      'بنرهای تبلیغاتی GIF و استاتیک با بالاترین نرخ کلیک',
-      'کاورهای هایلایت و قالب‌های اختصاصی اینستاگرام'
-    ],
-    technologies: ['Adobe Photoshop', 'Adobe Illustrator', 'Figma', 'Motion Design'],
-    image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1000&auto=format&fit=crop',
-    telegramLink: 'https://t.me/ali_ziaee1382',
-    clientName: 'برند استارت‌آپی تکنوتک',
-    rating: 5,
-    featured: true,
-  },
-  {
-    id: 'p5',
-    title: 'ربات تلگرام دانلودر هوشمند رسانه و موزیک',
-    category: 'bot',
-    categoryName: 'ربات تلگرام',
-    description: 'ربات دانلود فوری از اینستاگرام، یوتیوب و پلتفرم‌های موزیک با قابلیت تبدیل فرمت.',
-    fullDetails: 'ربات پرسرعت پردازش رسانه که لینک دریافت شده از کاربر را در چند ثانیه دانلود کرده و به همراه کاور، متادیتا و توضیحات تمیز تحویل می‌دهد.',
-    features: [
-      'دانلود با کیفیت‌های مختلف',
-      'تبدیل ویدیو به ویس و موزیک',
-      'سیستم قفل کانال برای افزایش ممبر (Force Join)',
-      'سرعت بالای دانلود با سرور اختصاصی'
-    ],
-    technologies: ['Node.js', 'Telegram API', 'FFmpeg', 'Redis'],
-    image: 'https://images.unsplash.com/photo-1614680376593-902f749f71c3?q=80&w=1000&auto=format&fit=crop',
-    telegramLink: 'https://t.me/ali_ziaee1382',
-    rating: 5,
-  },
-  {
-    id: 'p6',
-    title: 'وبسایت شرکتی و معرفی خدمات وردپرس',
+    id: 'p-abzar',
+    title: 'فروشگاه تخصصی ابزارآلات و تجهیزات صنعتی',
     category: 'wordpress',
-    categoryName: 'وردپرس',
-    description: 'سایت شرکتی چندزبانه با پنل مدیریت بسیار آسان و فرم‌های مشاوره آنلاین.',
-    fullDetails: 'پیاده‌سازی وبسایت شرکتی با امنیت بالا، بهینه‌سازی فرم‌های دریافت لید، جدول قیمت‌گذاری تعاملی و بخش وبلاگ اختصاصی.',
+    categoryName: 'وردپرس / ووکامرس',
+    description: 'طراحی فروشگاه اینترنتی جامع ابزار با قالب وردپرسی اختصاصی، فیلتر پیشرفته محصولات و درگاه پرداخت آنلاین.',
+    fullDetails: 'طراحی و پیاده‌سازی فروشگاه آنلاین ابزارآلات صنعتی و ساختمانی بر پایه وردپرس و ووکامرس؛ دارای مگامنوی دسته‌بندی ابزارآلات، فیلتر هوشمند برند و توان فنی، جدول مشخصات کالا و بهینه‌سازی سرعت بارگذاری.',
     features: [
-      'طراحی فرم‌های جلب مشتری با قابلیت اتصال به ایمیل و پیامک',
-      'سیستم امنیت سخت‌گیرانه وردپرس (Wordfence Config)',
-      'صفحه درباره ما و نمونه‌کارهای گالری‌محور',
-      'آموزش کامل ویدیویی کار با پنل برای کادر شرکت'
+      'فیلتر پیشرفته محصولات بر اساس برند، توان و نوع کاربرد',
+      'مگامنوی تخصصی ابزارآلات برقی، شارژی، بادی و دستی',
+      'اتصال به درگاه‌های پرداخت شتاب و سیستم پیامکی ثبت سفارش',
+      'سرعت لود بسیار بالا با کش پیشرفته و رعایت اصول سئو',
+      'طراحی کاملاً واکنش‌گرا و سازگار با موبایل'
     ],
-    technologies: ['WordPress', 'Elementor', 'WPML', 'Security Hardening'],
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop',
-    telegramLink: 'https://t.me/ali_ziaee1382',
+    technologies: ['WordPress', 'WooCommerce', 'Elementor Pro', 'Custom PHP', 'CSS3/Tailwind'],
+    image: 'https://images.unsplash.com/photo-1581783898377-1c85bf937427?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://chat0003.ir/abzar/dist',
+    demoBtnText: 'مشاهده دمو',
+    telegramLink: 'https://t.me/zerozerozerotreebot',
+    clientName: 'فروشگاه ابزار صنعت',
     rating: 5,
+    featured: true,
+  },
+  {
+    id: 'p-eldorado',
+    title: 'وبسایت کاتالوگ و معرفی نمایشگاه مبلمان الدورادو',
+    category: 'web',
+    categoryName: 'طراحی وب / کاتالوگ آنلاین',
+    description: 'طراحی لوکس و اختصاصی وبسایت گالری مبلمان با شوروم آنلاین، آلبوم محصولات باکیفیت و استعلام قیمت.',
+    fullDetails: 'طراحی وبسایت معرفی و شوروم آنلاین گالری مبلمان الدورادو با طراحی مینیمال و باشکوه، گالری تصاویر ست‌های مبل و سرویس خواب با وضوح بالا، معرفی شعبات و فرم مشاوره آنلاین دکوراسیون.',
+    features: [
+      'گالری بصری لوکس با نمایش جزئیات ست‌های مبلمان و ناهارخوری',
+      'دسته‌بندی هوشمند محصولات (مدرن، کلاسیک، نئوکلاسیک، راحتی)',
+      'سیستم ثبت درخواست مشاوره و استعلام قیمت آنلاین',
+      'بخش معرفی شعبات و مسیریابی نمایشگاه‌ها',
+      'انیمیشن‌های لطیف و تایپوگرافی چشم‌نواز با تم لوکس'
+    ],
+    technologies: ['React / HTML5', 'Tailwind CSS', 'Framer Motion', 'Lightbox'],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://chat0003.ir/eldorado/dist',
+    demoBtnText: 'مشاهده دمو',
+    telegramLink: 'https://t.me/zerozerozerotreebot',
+    clientName: 'گالری مبلمان الدورادو',
+    rating: 5,
+    featured: true,
+  },
+  {
+    id: 'p-imantak',
+    title: 'وبسایت شرکتی، هلدینگ و معرفی خدمات ایمان تک',
+    category: 'web',
+    categoryName: 'طراحی وب شرکتی',
+    description: 'طراحی مدرن وبسایت رسمی شرکتی با معرفی پروژه‌ها، دپارتمان‌ها، تیم مدیریتی و فرم مشاوره اختصاصی.',
+    fullDetails: 'طراحی و توسعه وبسایت شرکتی و سازمانی ایمان تک با ساختار چندبخشی رسمی، بخش معرفی دپارتمان‌ها و هیئت مدیره، گزارش عملکرد، تاریخچه شرکت و گالری پروژه‌های انجام‌شده با انیمیشن‌های روان سازمانی.',
+    features: [
+      'صفحه اختصاصی معرفی دپارتمان‌ها و ساختار سازمانی شرکت',
+      'گالری پروژه‌ها و رزومه کاری به همراه شاخص‌های کلیدی موفقیت',
+      'فرم هوشمند درخواست همکاری و مشاوره شرکتی',
+      'طراحی ریسپانسیو و بهینه‌شده برای تمامی نمایشگرها',
+      'سرعت بارگذاری بالا و کدنویسی بهینه طبق استانداردهای وب سازمانی'
+    ],
+    technologies: ['React', 'Tailwind CSS', 'TypeScript', 'Lucide Icons', 'Vite'],
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://chat0003.ir/imantak/dist',
+    demoBtnText: 'مشاهده دمو',
+    telegramLink: 'https://t.me/zerozerozerotreebot',
+    clientName: 'شرکت ایمان تک',
+    rating: 5,
+    featured: true,
+  },
+  {
+    id: 'p-toys',
+    title: 'فروشگاه آنلاین و اسباب‌بازی‌فروشی دنیای کودک',
+    category: 'web',
+    categoryName: 'فروشگاه اینترنتی',
+    description: 'طراحی شاد، جذاب و کاربرپسند فروشگاه اسباب‌بازی با دسته‌بندی سنی، سبد خرید و فیلتر تفکیک‌شده.',
+    fullDetails: 'طراحی فروشگاه اینترنتی اسباب‌بازی و سرگرمی با پالت رنگی شاد و تعاملی، فیلتر محصولات بر اساس رده سنی (نوزاد، کودک، نوجوان)، دسته‌بندی بر اساس بازی‌های فکری، لگو، عروسک و ماشین، با سرعت و تجربه کاربری لذت‌بخش برای والدین.',
+    features: [
+      'فیلتر پیشرفته هوشمند بر اساس رده سنی کودک و نوع اسباب‌بازی',
+      'رابط کاربری شاد، رنگارنگ و دوست‌داشتنی برای خانواده‌ها',
+      'نمایش وضعیت موجودی کالا و برچسب‌های تخفیف شگفت‌انگیز',
+      'سبد خرید سریع و فرآیند ثبت سفارش آسان در چند ثانیه',
+      'سازگاری کامل با تلفن همراه و تبلت'
+    ],
+    technologies: ['React / HTML5', 'Tailwind CSS', 'TypeScript', 'Framer Motion'],
+    image: 'https://images.unsplash.com/photo-1558877385-81a1c7e67d72?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://chat0003.ir/toys/dist',
+    demoBtnText: 'مشاهده دمو',
+    telegramLink: 'https://t.me/zerozerozerotreebot',
+    clientName: 'فروشگاه توی لند',
+    rating: 5,
+    featured: true,
+  },
+  {
+    id: 'p-dr',
+    title: 'سامانه نوبت‌دهی آنلاین مطب و کلینیک پزشک',
+    category: 'web',
+    categoryName: 'طراحی وب / خدمات پزشکی',
+    description: 'سامانه هوشمند رزرو وقت ویزیت پزشک با انتخاب روز و ساعت، پرونده سلامت و یادآور پیامکی.',
+    fullDetails: 'طراحی پلتفرم جامع رزرو نوبت پزشکان با تقویم هوشمند نوبت‌دهی، انتخاب تخصص و خدمات درمانی، ارسال پیامک تایید نوبت، پنل مدیریت بیماران و سوابق نوبت‌ها، با محیطی آرامش‌بخش، تمیز و استاندارد حوزه سلامت.',
+    features: [
+      'تقویم تعاملی انتخاب روز و ساعت دقیق ویزیت',
+      'تفکیک خدمات پزشکی، کلینیکی و پاراکلینیکی',
+      'سیستم ارسال خودکار پیامک یادآوری نوبت به بیمار',
+      'طراحی ریسپانسیو و دسترسی سریع سالمندان و بیماران',
+      'فرم ثبت مشخصات بیمار و علت مراجعه'
+    ],
+    technologies: ['React', 'Tailwind CSS', 'TypeScript', 'Lucide Icons', 'Vite'],
+    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://chat0003.ir/dr/dist',
+    demoBtnText: 'مشاهده دمو',
+    telegramLink: 'https://t.me/zerozerozerotreebot',
+    clientName: 'کلینیک تخصصی دکتر سلامت',
+    rating: 5,
+    featured: true,
+  },
+  {
+    id: 'p-edu',
+    title: 'پلتفرم آکادمی و دوره‌های رایگان آموزشی دینا',
+    category: 'web',
+    categoryName: 'طراحی وب آموزشی',
+    description: 'سایت آموزشی مدرن ویژه ارائه رایگان دوره‌های مهارتی، ویدیو پلیر آنلاین، سرفصل دروس و آزمون.',
+    fullDetails: 'طراحی پلتفرم آموزش آنلاین دینا با محوریت ارائه دوره‌های رایگان و ارتقای مهارت، دارای ویدیو پلیر اختصاصی، نمایش سرفصل و دقایق آموزشی هر جلسه، دانلود فایل‌های ضمیمه دوره، پروفایل پیشرفت تحصیلی دانشجو و نظرات کاربران.',
+    features: [
+      'دسته‌بندی جامع دوره‌های آموزشی مهارتی و تخصصی رایگان',
+      'پلیر اختصاصی ویدیو با کنترل کیفیت و سرعت پخش',
+      'سرفصل‌بندی جلسات و فایل‌های تمرینی قابل دانلود',
+      'نشانگر درصد پیشرفت تحصیلی و اتمام دوره',
+      'بخش پرسش و پاسخ دانشجویان و استاد'
+    ],
+    technologies: ['React', 'Tailwind CSS', 'TypeScript', 'Framer Motion', 'Vite'],
+    image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://chat0003.ir/edu/dist',
+    demoBtnText: 'مشاهده دمو',
+    telegramLink: 'https://t.me/zerozerozerotreebot',
+    clientName: 'آموزشگاه آنلاین دینا',
+    rating: 5,
+    featured: true,
+  },
+  {
+    id: 'p-food',
+    title: 'منوی دیجیتال QR و سفارش آنلاین رستوران و کافه',
+    category: 'web',
+    categoryName: 'منوی دیجیتال / رستورانی',
+    description: 'منوی هوشمند کیوآرکد رستوران با دسته‌بندی غذاها، پیش‌غذا، نوشیدنی، تصاویر اشتها‌آور و ثبت سفارش سر میز.',
+    fullDetails: 'طراحی سامانه منوی دیجیتال تعاملی ویژه رستوران‌ها، کافه‌ها و فودکورت‌ها؛ باز شدن سریع با اسکن کد QR بدون نیاز به نصب اپلیکیشن، دسته‌بندی غذاهای اصلی، پیش‌غذا، نوشیدنی و دسر، نمایش کالری، ترکیبات غذا و ثبت سفارش مستقیم.',
+    features: [
+      'اسکن سریع با بارکد QR سر میز و لود آنی زیر ۱ ثانیه',
+      'تفکیک هوشمند دسته‌ها (غذای ایرانی، فرنگی، فست‌فود، بار گرم و سرد)',
+      'نمایش قیمت به‌روز، ترکیبات و تصاویر باکیفیت و اشتهاآور',
+      'سیستم ثبت سفارش سر میز و فراخوانی گارسون',
+      'طراحی دارک/لایت لوکس و متناسب با فضای رستوران'
+    ],
+    technologies: ['React', 'Tailwind CSS', 'TypeScript', 'Framer Motion'],
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://chat0003.ir/food/dist',
+    demoBtnText: 'مشاهده دمو',
+    telegramLink: 'https://t.me/zerozerozerotreebot',
+    clientName: 'مجموعه رستوران‌های گرند',
+    rating: 5,
+    featured: true,
+  },
+  {
+    id: 'p-time',
+    title: 'سامانه ساعت جهانی، تقویم و مبدل تاریخ آنلاین',
+    category: 'web',
+    categoryName: 'ابزار وب و کاربردی',
+    description: 'ابزار دقیق نمایش ساعت زنده پایتخت‌های جهان، تقویم شمسی/میلادی/قمری و تبدیل آنی تاریخ.',
+    fullDetails: 'طراحی ابزار تخصصی زمان و تقویم با ساعت دیجیتال و آنالوگ دقیق زنده، مقایسه تایم‌زون‌های بین‌المللی، تبدیل بدون خطای تاریخ‌های شمسی، میلادی و هجری قمری، نمایش مناسبت‌های روز و اوقات شرعی با انیمیشن عقربه‌ای روان.',
+    features: [
+      'نمایش زنده ساعت رسمی پایتخت‌ها و شهرهای مهم جهان',
+      'تبدیل سریع و دوطرفه تاریخ شمسی، میلادی و قمری',
+      'تقویم ماهانه همراه با رویدادها و تعطیلات رسمی',
+      'نمایش تایمر، استاپ‌واچ و اوقات شرعی دقیق',
+      'رابط کاربری مدرن، مینیمال و فوق‌العاده سبک'
+    ],
+    technologies: ['React', 'Tailwind CSS', 'TypeScript', 'Intl API', 'Vite'],
+    image: 'https://images.unsplash.com/photo-1508057198894-247b23fe5ade?q=80&w=1000&auto=format&fit=crop',
+    demoUrl: 'https://chat0003.ir/time/dist',
+    demoBtnText: 'مشاهده دمو',
+    telegramLink: 'https://t.me/zerozerozerotreebot',
+    clientName: 'سامانه تایم اند دیت',
+    rating: 5,
+    featured: true,
   }
 ];
 
 export const SERVICES_DATA: Service[] = [
   {
-    id: 'web',
-    title: 'طراحی وبسایت اختصاصی',
-    description: 'طراحی و ساخت وبسایت‌های فرانت‌اند مدرن، تک‌صفحه‌ای و چندصفحه‌ای با آخرین تکنولوژی‌های روز دنیا مانند React و Tailwind CSS.',
+    id: 'web_wp',
+    title: 'طراحی سایت اختصاصی و وردپرس',
+    description: 'طراحی و توسعه وبسایت‌های مدرن فرانت‌اند اختصاصی (React/Tailwind) و سایت‌های قدرتمند وردپرس و ووکامرس؛ بهینه‌سازی سرعت، امنیت بالا و سئوی فنی.',
     iconName: 'Code',
-    tag: 'مدرن و پرسرعت',
+    tag: 'مدرن و قدرتمند',
     features: [
-      'طراحی کاملاً اختصاصی (بدون قالب آماده)',
-      'سرعت بارگذاری فوق‌العاده بالینی (زیر ۱ ثانیه)',
-      'انیمیشن‌های نرم و افکت‌های بصری خیره‌کننده',
-      'واکنش‌گرا (Responsive) روی موبایل، تبلت و دسکتاپ',
-      'کدنویسی تمیز و بهینه برای سئو'
+      'طراحی اختصاصی با React، TypeScript و استایل‌های مدرن نئونی',
+      'راه‌اندازی و سفارشی‌سازی پیشرفته وردپرس و فروشگاه ووکامرس',
+      'سرعت بارگذاری فوق‌العاده بالا و بهینه‌سازی سئو (GTmetrix Grade A)',
+      'تأمین امنیت کامل، لایه‌های ضد هک و گواهی SSL',
+      'طراحی کاملاً واکنش‌گرا (Responsive) و پنل مدیریت فارسی آسان'
+    ]
+  },
+  {
+    id: 'app',
+    title: 'طراحی و توسعه اپلیکیشن موبایل',
+    description: 'برنامه‌نویسی و ساخت اپلیکیشن‌های حرفه‌ای و بومی اندروید با کتلین (Kotlin) و جاوا (Java) با معماری مدرن، سرعت بالا و ظاهر شیک.',
+    iconName: 'Smartphone',
+    tag: 'کتلین و جاوا (Native)',
+    features: [
+      'برنامه‌نویسی Native اندروید با زبان‌های کاتلین (Kotlin) و جاوا (Java)',
+      'پیاده‌سازی معماری تمیز مدرن (MVVM) و رابط کاربری متریال دیزاین',
+      'اتصال به انواع وب‌سرویس و Restful API و پایگاه‌داده محلی (Room / SQLite)',
+      'طراحی رابط کاربری روان و بهینه‌سازی مصرف باتری و رم',
+      'خروجی استاندارد با کمترین حجم، آماده انتشار در کافه بازار و مایکت'
     ]
   },
   {
     id: 'bot',
-    title: 'توسعه ربات تلگرام',
+    title: 'توسعه ربات هوشمند تلگرام',
     description: 'ساخت ربات‌های کاربردی، فروشگاهی، مدیریت گروه و کانال، ثبت سفارش، اتصال به درگاه پرداخت و وب‌سایت شما.',
     iconName: 'Bot',
     tag: 'اتوماسیون هوشمند',
     features: [
-      'اتصال به درگاه‌های پرداخت بانکی و کریپتو',
-      'پنل مدیریت حرفه‌ای درون تلگرام',
+      'اتصال به درگاه‌های پرداخت بانکی شتابی و کریپتو',
+      'پنل مدیریت حرفه‌ای درون تلگرام با آمار دقیق',
       'سیستم احراز هویت و قفل کانال اجباری',
       'امکان اتصال به دیتابیس و وب‌سایت',
       'پشتیبانی و آپتایم ۹۹.۹٪ روی سرور اختصاصی'
-    ]
-  },
-  {
-    id: 'wordpress',
-    title: 'طراحی و مدیریت وردپرس',
-    description: 'راه‌اندازی سایت‌های فروشگاهی، شرکتی، خبری و شخصی با وردپرس؛ بهینه‌سازی سرعت، امنیت و مدیریت کامل فنی.',
-    iconName: 'Globe',
-    tag: 'محبوب و انعطاف‌پذیر',
-    features: [
-      'طراحی قالب‌های جذاب با المنتور پرو',
-      'راه‌اندازی فروشگاه ووکامرس و اتصال به درگاه',
-      'بهینه‌سازی جدی سرعت (GTmetrix Grade A)',
-      'تأمین امنیت کامل و ضد هک کردن وردپرس',
-      'مدیریت محتوا، پشتیبان‌گیری منظم و بروزرسانی'
     ]
   },
   {
@@ -274,12 +544,12 @@ export const SERVICES_DATA: Service[] = [
 ];
 
 export const SKILLS_DATA: Skill[] = [
-  { name: 'طراحی فرانت‌اند (React / JS / HTML / CSS)', level: 95, category: 'web' },
-  { name: 'توسعه ربات تلگرام (Python / Node.js)', level: 90, category: 'bot' },
-  { name: 'وردپرس و ووکامرس (WooCommerce)', level: 92, category: 'wordpress' },
-  { name: 'طراحی گرافیک (Photoshop / Figma)', level: 88, category: 'design' },
-  { name: 'بهینه‌سازی سرعت و سئو فنی', level: 85, category: 'web' },
-  { name: 'طراحی بنر و لوگو', level: 90, category: 'design' },
+  { name: 'طراحی سایت اختصاصی و وردپرس (React / WordPress / Tailwind)', level: 96, category: 'web' },
+  { name: 'برنامه‌نویسی اپلیکیشن اندروید (Kotlin / Java / Native)', level: 92, category: 'app' },
+  { name: 'توسعه ربات هوشمند تلگرام (Python / Node.js)', level: 91, category: 'bot' },
+  { name: 'طراحی رابط کاربری و گرافیک (Figma / Photoshop)', level: 88, category: 'design' },
+  { name: 'بهینه‌سازی سرعت، امنیت و سئوی تکنیکال', level: 94, category: 'web' },
+  { name: 'طراحی بنر تبلیغاتی و هویت بصری برند و لوگو', level: 90, category: 'design' },
 ];
 
 export const TESTIMONIALS_DATA: Testimonial[] = [
@@ -315,7 +585,7 @@ export const TESTIMONIALS_DATA: Testimonial[] = [
 export const FAQ_DATA: FAQItem[] = [
   {
     question: 'چگونه می‌توانم یک پروژه جدید سفارش دهم؟',
-    answer: 'شما می‌توانید از طریق فرم تماس در همین سایت، یا مستقیماً از طریق تلگرام (ali_ziaee1382@) یا تماس تلفنی با شماره 09960826040 با من در ارتباط باشید تا پس از بررسی جزئیات، زمان و هزینه دقیق تقدیم حضورتان شود.'
+    answer: 'شما می‌توانید از طریق فرم تماس در همین سایت، یا مستقیماً از طریق تلگرام (zerozerozerotreebot@) یا تماس تلفنی با شماره 09960826040 با من در ارتباط باشید تا پس از بررسی جزئیات، زمان و هزینه دقیق تقدیم حضورتان شود.'
   },
   {
     question: 'فرآیند و نحوه پرداخت به چه صورت است؟',

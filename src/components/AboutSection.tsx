@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { User, Zap, Shield, HeartHandshake, Code, Bot, Globe, Palette, ArrowLeft, Star, Sparkles, CheckCircle2 } from 'lucide-react';
-import { PERSONAL_INFO, SERVICES_DATA, TESTIMONIALS_DATA } from '../data/portfolioData';
-import { PersonalInfo, Service, Testimonial, ThemeMode } from '../types';
+import React from 'react';
+import { User, Zap, Shield, HeartHandshake, Code, Bot, Globe, Palette, Smartphone, ArrowLeft, Sparkles, Heart, ExternalLink } from 'lucide-react';
+import { PERSONAL_INFO, SERVICES_DATA } from '../data/portfolioData';
+import { PersonalInfo, Service, ThemeMode } from '../types';
 
 interface AboutSectionProps {
   theme: ThemeMode;
   onOrderService?: (serviceTitle: string) => void;
   personalInfo?: PersonalInfo;
   services?: Service[];
-  testimonials?: Testimonial[];
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({
@@ -17,21 +15,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   onOrderService,
   personalInfo = PERSONAL_INFO,
   services = SERVICES_DATA,
-  testimonials = TESTIMONIALS_DATA,
 }: AboutSectionProps) => {
-  const testimonialsList = testimonials && testimonials.length > 0 ? testimonials : TESTIMONIALS_DATA;
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-
-  useEffect(() => {
-    if (testimonialsList.length <= 1) return;
-    const interval = setInterval(() => {
-      setCurrentTestimonialIndex((prevIndex) => (prevIndex + 1) % testimonialsList.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonialsList.length]);
-
-  const activeIndex = currentTestimonialIndex >= testimonialsList.length ? 0 : currentTestimonialIndex;
-  const currentItem = testimonialsList[activeIndex];
   const principles = [
     {
       icon: <Zap className="w-6 h-6 text-amber-500" />,
@@ -56,11 +40,12 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   ];
 
   const getServiceIcon = (iconName: string) => {
-    switch (iconName) {
-      case 'Code': return <Code className="w-6 h-6 text-purple-500" />;
-      case 'Bot': return <Bot className="w-6 h-6 text-amber-500" />;
-      case 'Globe': return <Globe className="w-6 h-6 text-indigo-500" />;
-      case 'Palette': return <Palette className="w-6 h-6 text-rose-500" />;
+    switch (iconName?.toLowerCase()) {
+      case 'code': return <Code className="w-6 h-6 text-purple-500" />;
+      case 'smartphone': return <Smartphone className="w-6 h-6 text-cyan-500" />;
+      case 'bot': return <Bot className="w-6 h-6 text-amber-500" />;
+      case 'globe': return <Globe className="w-6 h-6 text-indigo-500" />;
+      case 'palette': return <Palette className="w-6 h-6 text-rose-500" />;
       default: return <Sparkles className="w-6 h-6 text-purple-500" />;
     }
   };
@@ -120,7 +105,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {SERVICES_DATA.map((service) => (
+          {(services && services.length > 0 ? services : SERVICES_DATA).map((service) => (
             <div
               key={service.id}
               className={`p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between ${
@@ -209,100 +194,42 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         </div>
       </div>
 
-      {/* Testimonials Review Cards - Single Row Slider (Auto 5s) */}
-      <div className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h3 className={`text-xl font-bold flex items-center gap-2 ${
-            theme === 'dark' ? 'text-white' : 'text-slate-900'
-          }`}>
-            <span className="w-2.5 h-6 bg-purple-600 rounded-full inline-block" />
-            نظرات مشتریان و رضایت کارهای قبلی
-          </h3>
-
-          {/* Slide Indicator Dots */}
-          {testimonialsList.length > 1 && (
-            <div className="flex items-center gap-1.5">
-              {testimonialsList.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentTestimonialIndex(idx)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    idx === activeIndex
-                      ? 'w-6 bg-purple-500'
-                      : theme === 'dark'
-                      ? 'w-1.5 bg-slate-700'
-                      : 'w-1.5 bg-slate-300'
-                  }`}
-                  aria-label={`Slide ${idx + 1}`}
-                />
-              ))}
+      {/* Financial Support / Donation Card */}
+      <div
+        id="financial-support-section"
+        className={`p-6 sm:p-7 rounded-2xl sm:rounded-3xl border transition-all duration-300 ${
+          theme === 'dark'
+            ? 'bg-gradient-to-r from-purple-950/40 via-slate-900/90 to-purple-950/40 border-purple-500/30 shadow-xl'
+            : 'bg-gradient-to-r from-purple-50 via-white to-purple-50 border-purple-200 shadow-md'
+        }`}
+      >
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-right">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="w-13 h-13 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 flex-shrink-0 shadow-inner">
+              <Heart className="w-6 h-6 text-rose-500 fill-rose-500/20" />
             </div>
-          )}
-        </div>
-
-        {currentItem && (
-          <div className="relative overflow-hidden min-h-[160px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentItem.id || activeIndex}
-                initial={{ opacity: 0, x: 25 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -25 }}
-                transition={{ duration: 0.4 }}
-                className={`p-6 rounded-2xl border flex flex-col justify-between shadow-sm ${
-                  theme === 'dark'
-                    ? 'bg-slate-900/80 border-purple-500/20'
-                    : 'bg-slate-50 border-slate-200'
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex gap-1 text-amber-400">
-                      {[...Array(currentItem.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-amber-400" />
-                      ))}
-                    </div>
-                    <span className="text-xs font-bold text-purple-400 bg-purple-950/80 px-3 py-1 rounded-full border border-purple-500/30">
-                      {currentItem.projectType}
-                    </span>
-                  </div>
-
-                  <p className={`text-sm sm:text-base leading-relaxed mb-6 italic ${
-                    theme === 'dark' ? 'text-slate-200' : 'text-slate-700'
-                  }`}>
-                    "{currentItem.comment}"
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-purple-500/10">
-                  <div className="flex items-center gap-3">
-                    <img
-                      src={currentItem.avatar}
-                      alt={currentItem.name}
-                      className="w-10 h-10 rounded-full object-cover border border-purple-500/30"
-                    />
-                    <div>
-                      <h5 className={`text-sm font-bold ${
-                        theme === 'dark' ? 'text-white' : 'text-slate-900'
-                      }`}>
-                        {currentItem.name}
-                      </h5>
-                      <p className={`text-xs ${
-                        theme === 'dark' ? 'text-slate-400' : 'text-slate-500'
-                      }`}>
-                        {currentItem.role}
-                      </p>
-                    </div>
-                  </div>
-
-                  <span className="text-[11px] font-medium text-purple-400/80 bg-purple-500/10 px-2.5 py-1 rounded-md">
-                    {activeIndex + 1} از {testimonialsList.length}
-                  </span>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+            <div>
+              <h4 className={`text-base sm:text-lg font-bold ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
+                حمایت مالی از پروژه‌ها و فعالیت‌ها
+              </h4>
+              <p className={`text-xs sm:text-sm mt-1 max-w-xl ${theme === 'dark' ? 'text-slate-300' : 'text-slate-600'}`}>
+                اگر از پروژه‌ها، آموزش‌ها یا ساخته‌های من استفاده کردید یا قصد حمایت دارید، همراهی شما ارزشمند و انرژی‌بخش است.
+              </p>
+            </div>
           </div>
-        )}
+
+          <a
+            id="daramet-donation-btn"
+            href="https://daramet.com/aliziaee1382"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-bold shadow-lg shadow-purple-600/30 transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap"
+          >
+            <Heart className="w-4 h-4 text-rose-300 fill-rose-300" />
+            <span>میتوانید ازاین طریق حمایت کنید</span>
+            <ExternalLink className="w-4 h-4 opacity-80" />
+          </a>
+        </div>
       </div>
 
     </div>

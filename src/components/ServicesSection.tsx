@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Code, Bot, Globe, Palette, CheckCircle, Sparkles, ArrowLeft, Info, X, Send } from 'lucide-react';
+import { Code, Bot, Globe, Palette, Smartphone, CheckCircle, Sparkles, ArrowLeft, Info, X, Send } from 'lucide-react';
 import { SERVICES_DATA } from '../data/portfolioData';
 import { Service, ThemeMode } from '../types';
 
@@ -18,11 +18,12 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   const [activeModalService, setActiveModalService] = useState<Service | null>(null);
 
   const getIcon = (iconName: string, sizeClass = "w-6 h-6 sm:w-7 sm:h-7") => {
-    switch (iconName) {
-      case 'Code': return <Code className={`${sizeClass} text-purple-400`} />;
-      case 'Bot': return <Bot className={`${sizeClass} text-fuchsia-400`} />;
-      case 'Globe': return <Globe className={`${sizeClass} text-indigo-400`} />;
-      case 'Palette': return <Palette className={`${sizeClass} text-amber-400`} />;
+    switch (iconName?.toLowerCase()) {
+      case 'code': return <Code className={`${sizeClass} text-purple-400`} />;
+      case 'smartphone': return <Smartphone className={`${sizeClass} text-cyan-400`} />;
+      case 'bot': return <Bot className={`${sizeClass} text-fuchsia-400`} />;
+      case 'globe': return <Globe className={`${sizeClass} text-indigo-400`} />;
+      case 'palette': return <Palette className={`${sizeClass} text-amber-400`} />;
       default: return <Sparkles className={`${sizeClass} text-purple-400`} />;
     }
   };

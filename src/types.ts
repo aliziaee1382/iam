@@ -1,8 +1,10 @@
+import React from 'react';
+
 export type ThemeMode = 'dark' | 'light';
 
-export type PageSection = 'home' | 'about' | 'services' | 'masterpieces' | 'portfolio' | 'contact';
+export type PageSection = 'home' | 'about' | 'services' | 'creations' | 'bot_services' | 'apps' | 'portfolio' | 'contact' | 'masterpieces';
 
-export type ProjectCategory = 'all' | 'web' | 'bot' | 'wordpress' | 'graphic';
+export type ProjectCategory = 'all' | 'web' | 'app' | 'bot' | 'wordpress' | 'graphic';
 
 export interface CustomContact {
   id: string;
@@ -49,6 +51,44 @@ export interface Masterpiece {
   clientName?: string;
 }
 
+export interface BotServiceItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  badge: string;
+  description: string;
+  impactMetric: string;
+  impactLabel: string;
+  image: string;
+  demoUrl?: string;
+  demoBtnText?: string;
+  orderBtnText?: string;
+  orderBtnUrl?: string;
+  technologies: string[];
+  keyInnovations: string[];
+  clientName?: string;
+}
+
+export interface AppItem {
+  id: string;
+  title: string;
+  subtitle: string;
+  badge: string;
+  description: string;
+  impactMetric: string;
+  impactLabel: string;
+  image: string;
+  demoUrl?: string;
+  demoBtnText?: string;
+  downloadUrl?: string;
+  downloadBtnText?: string;
+  orderBtnText?: string;
+  orderBtnUrl?: string;
+  technologies: string[];
+  keyInnovations: string[];
+  clientName?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -60,6 +100,7 @@ export interface Project {
   technologies: string[];
   image: string;
   demoUrl?: string;
+  demoBtnText?: string;
   telegramLink?: string;
   clientName?: string;
   rating?: number;
@@ -89,7 +130,7 @@ export interface Testimonial {
 export interface Skill {
   name: string;
   level: number;
-  category: 'web' | 'bot' | 'wordpress' | 'design';
+  category: 'web' | 'app' | 'bot' | 'wordpress' | 'design';
   icon?: string;
 }
 
@@ -109,6 +150,22 @@ export interface OrderMessage {
 }
 
 declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'dotlottie-wc': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement> & {
+          src?: string;
+          autoplay?: boolean;
+          loop?: boolean;
+          style?: React.CSSProperties;
+        },
+        HTMLElement
+      >;
+    }
+  }
+}
+
+declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       'dotlottie-wc': React.DetailedHTMLProps<

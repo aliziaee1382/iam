@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Sparkles, Code, Bot, Globe, Palette, Send, ArrowDown, ShieldCheck, Zap, Star } from 'lucide-react';
+import { Sparkles, Code, Bot, Globe, Palette, Smartphone, Send, ArrowDown, ShieldCheck, Zap, Star } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 interface HeroProps {
@@ -9,20 +9,28 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onExplorePortfolio, onContactClick }) => {
-  const [activeTab, setActiveTab] = useState<'web' | 'bot' | 'wp' | 'design'>('web');
+  const [activeTab, setActiveTab] = useState<'web' | 'app' | 'bot' | 'design'>('web');
 
   const snippetContent = {
-    web: `// 0003 React Web Studio
-const App = () => {
-  const [theme, setTheme] = useState('dark');
-  
+    web: `// 0003 React & WordPress Studio
+const WebExperience = () => {
   return (
-    <StudioCanvas color="purple" mode={theme}>
-      <Hero title="علی ضیائی - طراح وب" />
-      <GlassmorphismCard animations="ultra-smooth" />
+    <StudioCanvas color="purple" mode="dark">
+      <Hero title="علی ضیائی - وبسایت اختصاصی و وردپرس" />
+      <SpeedScore gtmetrix="99/100" />
+      <ModernUI animation="smooth" />
     </StudioCanvas>
   );
 };`,
+    app: `// 0003 Native Android (Kotlin & Java)
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        // High Performance & Material Design UI
+        Studio0003App.init(KotlinCoroutines.FAST)
+    }
+}`,
     bot: `# 0003 Telegram Bot Core (Python)
 from telegram.ext import ApplicationBuilder, CommandHandler
 
@@ -31,14 +39,6 @@ async function start(update, context):
         "👋 سلام! به ربات اختصاصی 0003 خوش آمدید.\\n"
         "⚡ آماده پردازش اتوماتیک سفارشات شما"
     )`,
-    wp: `<?php
-// 0003 Custom WordPress Theme Engine
-add_action('wp_enqueue_scripts', function() {
-    wp_enqueue_style('vazir-font', 'fonts/vazir.css');
-    wp_enqueue_style('tail-v4', 'css/app.css');
-});
-// Speed score: 99/100 GTMetrix
-?>`,
     design: `/* 0003 Graphic & Branding Studio */
 .brand-identity {
   primary-color: #9333ea; /* Benafsh Purple */
@@ -100,10 +100,10 @@ add_action('wp_enqueue_scripts', function() {
               className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl font-normal"
             >
               سلام! من <strong className="text-purple-300 font-semibold">علی ضیائی</strong> هستم. متخصص{' '}
-              <span className="text-purple-300 underline underline-offset-4 decoration-purple-500/40">طراحی وبسایت اختصاصی</span>،{' '}
-              <span className="text-purple-300 underline underline-offset-4 decoration-purple-500/40">توسعه ربات‌های تلگرامی</span>،{' '}
-              <span className="text-purple-300 underline underline-offset-4 decoration-purple-500/40">وردپرس</span> و{' '}
-              <span className="text-purple-300 underline underline-offset-4 decoration-purple-500/40">دیزاین لوگو و بنر</span>.
+              <span className="text-purple-300 underline underline-offset-4 decoration-purple-500/40">طراحی سایت اختصاصی و وردپرس</span>،{' '}
+              <span className="text-purple-300 underline underline-offset-4 decoration-purple-500/40">توسعه اپلیکیشن (کتلین و جاوا)</span>،{' '}
+              <span className="text-purple-300 underline underline-offset-4 decoration-purple-500/40">ربات‌های تلگرام</span> و{' '}
+              <span className="text-purple-300 underline underline-offset-4 decoration-purple-500/40">دیزاین گرافیک</span>.
               تمرکز من بر نهایت زیبایی، سرعت بالا و کارآمدی محصولات است.
             </motion.p>
 
@@ -199,7 +199,19 @@ add_action('wp_enqueue_scripts', function() {
                     }`}
                   >
                     <Code className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">وبسایت</span>
+                    <span className="hidden sm:inline">وب و وردپرس</span>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab('app')}
+                    className={`flex items-center justify-center gap-1.5 py-2 px-1 text-xs font-medium rounded-lg transition-all ${
+                      activeTab === 'app'
+                        ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30'
+                        : 'text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    <Smartphone className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">اپلیکیشن</span>
                   </button>
 
                   <button
@@ -212,18 +224,6 @@ add_action('wp_enqueue_scripts', function() {
                   >
                     <Bot className="w-3.5 h-3.5" />
                     <span className="hidden sm:inline">ربات تلگرام</span>
-                  </button>
-
-                  <button
-                    onClick={() => setActiveTab('wp')}
-                    className={`flex items-center justify-center gap-1.5 py-2 px-1 text-xs font-medium rounded-lg transition-all ${
-                      activeTab === 'wp'
-                        ? 'bg-purple-600 text-white shadow-md shadow-purple-600/30'
-                        : 'text-slate-400 hover:text-slate-200'
-                    }`}
-                  >
-                    <Globe className="w-3.5 h-3.5" />
-                    <span className="hidden sm:inline">وردپرس</span>
                   </button>
 
                   <button
